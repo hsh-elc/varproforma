@@ -25,7 +25,7 @@ jobs:
           distribution: 'adopt'
           cache: gradle
 
-      - name: Set Release version env variable
+      - name: Set Release version environment variable
         run: |
           echo "RELEASE_VERSION=`grep -o "version\s\+.*" build.gradle | awk '{ print $2 }' | tr -d \''"\'`" >> $GITHUB_ENV
 
