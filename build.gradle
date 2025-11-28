@@ -15,7 +15,6 @@ java {
     withSourcesJar()
 }
 
-
 publishing {
     publications {
         mavenJava(MavenPublication) {
@@ -168,6 +167,9 @@ tasks.jar {
     }
 }
 
+tasks.compileJava {
+  options.encoding = "UTF-8"
+}
 
 test {
     testLogging {

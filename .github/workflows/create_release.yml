@@ -32,7 +32,7 @@ jobs:
       - name: Build with Gradle
         run: |
           chmod +x gradlew
-          ./gradlew --console plain clean build -x test
+          ./gradlew --console plain clean build publish -x test
 
       - name: Provide files
         run: |

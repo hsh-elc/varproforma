@@ -5,7 +5,7 @@
 # Eclipse Project Files
 .classpath
 .project
-.settings/
+#.settings/
 bin/
 
 # Intellij Project Files

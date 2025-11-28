@@ -98,8 +98,8 @@ public class MatSpec {
     public MatSpec addMaterialization(Materialization r) {
         for (MatMethod method : getMatMethodsOf(r)) {
             for (MatArtifact artifact : getMatArtifactsOf(r)) {
-                // Für einige Methods ist es jetzt zwar noch zu früh, weil diese erst nach dem
-                // init-Aufruf ihren Typ kennen. Für alle anderen machen wir es aber jetzt schon:
+                // FÃ¼r einige Methods ist es jetzt zwar noch zu frÃ¼h, weil diese erst nach dem
+                // init-Aufruf ihren Typ kennen. FÃ¼r alle anderen machen wir es aber jetzt schon:
                 if (method.getGenericType() != null && artifact.getValueType() != null && !method.getGenericType().equals(artifact.getValueType())) {
                     throw new IllegalArgumentException("MatSpec: materialization has inconsistent generic types (artifact '"+artifact.getId()+"':"+artifact.getValueType()+", method '"+method.getId()+"':"+method.getGenericType()+")");
                 

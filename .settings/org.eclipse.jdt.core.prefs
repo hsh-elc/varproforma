@@ -1,0 +1,8 @@
+#
+#Thu Nov 27 20:25:47 CET 2025
+org.eclipse.jdt.core.compiler.problem.assertIdentifier=error
+org.eclipse.jdt.core.compiler.codegen.targetPlatform=17
+org.eclipse.jdt.core.compiler.source=17
+eclipse.preferences.version=1
+org.eclipse.jdt.core.compiler.problem.enumIdentifier=error
+org.eclipse.jdt.core.compiler.compliance=17

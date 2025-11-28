@@ -131,8 +131,8 @@ public class Sample3 extends Application {
                         .collect("Ketchup", "Butter", "Bread")
                         .val(78266)
         //                .infer(vt -> new Random().nextInt(900000)+100000).noVariant("prod_articlenumber")  
-                                                                                               // noVariant bedeutet: bei der Variantenzählung wird hier ein Faktor 1 generiert. 
-                                                                                               // außerdem muss der bei der Variantengenerierung konkret gewählte Wert 
+                                                                                               // noVariant bedeutet: bei der VariantenzÃ¤hlung wird hier ein Faktor 1 generiert. 
+                                                                                               // auÃŸerdem muss der bei der Variantengenerierung konkret gewÃ¤hlte Wert 
                                                                                                // neben der Variantenummer gespeichert werden.
                     
                     .endCombineGroup()
