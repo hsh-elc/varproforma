@@ -1,0 +1,336 @@
+<?xml version="1.0" ?>
+<v:root xmlns:v="urn:proforma:variability:v1.0">
+  <v:cvp>
+    <v:vp key="c" type="string"></v:vp>
+    <v:vp key="tld" type="string"></v:vp>
+    <v:vp key="sld" type="string"></v:vp>
+    <v:vp key="n" type="string"></v:vp>
+    <v:vp key="m" type="string"></v:vp>
+    <v:vp key="ms" type="string"></v:vp>
+    <v:vp key="nval" type="string"></v:vp>
+    <v:vp key="mval" type="integer"></v:vp>
+    <v:vp key="b1" type="string"></v:vp>
+    <v:vp key="b2" type="string"></v:vp>
+    <v:vp key="e" type="string"></v:vp>
+  </v:cvp>
+  <v:collect-group>
+    <v:combine>
+      <v:string>Customer</v:string>
+      <v:string>com</v:string>
+      <v:string>company</v:string>
+      <v:string>customer name</v:string>
+      <v:string>customer id</v:string>
+      <v:string>customer ids</v:string>
+      <v:string>Johnson</v:string>
+      <v:integer>77865</v:integer>
+      <v:string>+</v:string>
+      <v:string>+</v:string>
+      <v:string>Error</v:string>
+    </v:combine>
+    <v:combine-group>
+      <v:collect-group>
+        <v:combine-group>
+          
+          <v:key>c</v:key>
+          <v:key>sld</v:key>
+          <v:key>tld</v:key>
+          <v:key>n</v:key>
+          <v:key>m</v:key>
+          <v:key>ms</v:key>
+          
+          <v:combine>
+            <v:string>Part</v:string>
+            <v:string>part0</v:string>
+          </v:combine>
+          <v:collect>
+            <v:string>com</v:string>
+            <v:string>company</v:string>
+            <v:string>co</v:string>
+          </v:collect>
+          <v:combine>
+            <v:string>part name</v:string>
+            <v:string>part number</v:string>
+            <v:string>part numbers</v:string>
+          </v:combine>
+        </v:combine-group>
+        <v:combine-group>
+          <v:val>
+            <v:string>Piece</v:string>
+          </v:val>
+          <v:collect-group>
+            <v:combine>
+              <v:string>co</v:string>
+              <v:string>piece2</v:string>
+            </v:combine>
+            <v:combine>
+              <v:string>company</v:string>
+              <v:string>piece7</v:string>
+            </v:combine>
+            <v:combine>
+              <v:string>com</v:string>
+              <v:string>piece3</v:string>
+            </v:combine>
+          </v:collect-group>
+          <v:combine>
+            <v:string>piece name</v:string>
+            <v:string>piece number</v:string>
+            <v:string>piece numbers</v:string>
+          </v:combine>
+        </v:combine-group>
+      </v:collect-group>
+      <v:combine>
+        <v:string>thing</v:string>
+        <v:integer>332</v:integer>
+        <v:string>{</v:string>
+        <v:string>}</v:string>
+        <v:string>Throwable</v:string>
+      </v:combine>
+    </v:combine-group>
+    <v:def id="student">
+      
+      <v:key>c</v:key>
+      <v:key>tld</v:key>
+      <v:key>sld</v:key>
+      <v:key>n</v:key>
+      <v:key>m</v:key>
+      <v:key>ms</v:key>
+      <v:key>nval</v:key>
+      <v:key>mval</v:key>
+      
+      <v:combine-group>
+        <v:val>
+          <v:string>Student</v:string>
+        </v:val>
+        <v:collect>
+          <v:string>edu</v:string>
+          <v:string>org</v:string>
+        </v:collect>
+        <v:collect>
+          <v:string>domain</v:string>
+          <v:string>university</v:string>
+        </v:collect>
+        <v:val>
+          <v:string>name</v:string>
+        </v:val>
+        <v:collect-group>
+          <v:combine-group>
+            
+            <v:key>ms</v:key>
+            <v:key>m</v:key>
+            
+            <v:val>
+              <v:string>matriculation numbers</v:string>
+            </v:val>
+            <v:val>
+              <v:string>matriculation number</v:string>
+            </v:val>
+          </v:combine-group>
+          <v:combine-group>
+            <v:val>
+              <v:string>student id</v:string>
+            </v:val>
+            <v:val>
+              <v:string>student ids</v:string>
+            </v:val>
+          </v:combine-group>
+        </v:collect-group>
+        <v:collect>
+          <v:string>Smith</v:string>
+          <v:string>Doe</v:string>
+          <v:string>Baldwin</v:string>
+        </v:collect>
+        <v:val>
+          <v:integer>1000000</v:integer>
+        </v:val>
+      </v:combine-group>
+    </v:def>
+    <v:def id="state">
+      
+      <v:key>c</v:key>
+      <v:key>n</v:key>
+      <v:key>m</v:key>
+      <v:key>ms</v:key>
+      <v:key>tld</v:key>
+      <v:key>sld</v:key>
+      <v:key>nval</v:key>
+      <v:key>mval</v:key>
+      
+      <v:combine-group>
+        <v:val>
+          <v:string>State</v:string>
+        </v:val>
+        <v:val>
+          <v:string>state name</v:string>
+        </v:val>
+        <v:val>
+          <v:string>number of residents</v:string>
+        </v:val>
+        <v:val>
+          <v:string>numbers of residents</v:string>
+        </v:val>
+        <v:collect-group>
+          
+          <v:key>tld</v:key>
+          <v:key>sld</v:key>
+          <v:key>mval</v:key>
+          <v:key>nval</v:key>
+          
+          <v:combine-group>
+            <v:collect>
+              <v:string>net</v:string>
+              <v:string>org</v:string>
+            </v:collect>
+            <v:combine>
+              <v:string>geo</v:string>
+              <v:integer>1234567</v:integer>
+              <v:string>State</v:string>
+            </v:combine>
+          </v:combine-group>
+          <v:combine-group>
+            
+            <v:key>sld</v:key>
+            <v:key>tld</v:key>
+            <v:key>nval</v:key>
+            <v:key>mval</v:key>
+            
+            <v:collect>
+              <v:string>land</v:string>
+              <v:string>staat</v:string>
+            </v:collect>
+            <v:combine>
+              <v:string>de</v:string>
+              <v:string>Bayern</v:string>
+              <v:integer>12860010</v:integer>
+            </v:combine>
+          </v:combine-group>
+          <v:combine>
+            <v:string>ch</v:string>
+            <v:string>kanton</v:string>
+            <v:integer>784681</v:integer>
+            <v:string>Waadt</v:string>
+          </v:combine>
+          <v:combine>
+            <v:string>uk</v:string>
+            <v:string>region</v:string>
+            <v:integer>3092000</v:integer>
+            <v:string>Wales</v:string>
+          </v:combine>
+        </v:collect-group>
+      </v:combine-group>
+    </v:def>
+    <v:def id="prod">
+      
+      <v:key>c</v:key>
+      <v:key>tld</v:key>
+      <v:key>sld</v:key>
+      <v:key>n</v:key>
+      <v:key>m</v:key>
+      <v:key>ms</v:key>
+      <v:key>nval</v:key>
+      <v:key>mval</v:key>
+      
+      <v:combine-group>
+        
+        <v:key>tld</v:key>
+        <v:key>sld</v:key>
+        <v:key>c</v:key>
+        <v:key>n</v:key>
+        <v:key>m</v:key>
+        <v:key>ms</v:key>
+        <v:key>nval</v:key>
+        <v:key>mval</v:key>
+        
+        <v:val>
+          <v:string>com</v:string>
+        </v:val>
+        <v:val>
+          <v:string>mymart</v:string>
+        </v:val>
+        <v:val>
+          <v:string>Prod</v:string>
+        </v:val>
+        <v:val>
+          <v:string>product name</v:string>
+        </v:val>
+        <v:val>
+          <v:string>article number</v:string>
+        </v:val>
+        <v:val>
+          <v:string>article numbers</v:string>
+        </v:val>
+        <v:collect>
+          <v:string>Ketchup</v:string>
+          <v:string>Butter</v:string>
+          <v:string>Bread</v:string>
+        </v:collect>
+        <v:val>
+          <v:integer>78266</v:integer>
+        </v:val>
+      </v:combine-group>
+    </v:def>
+    <v:def id="()">
+      
+      <v:key>b1</v:key>
+      <v:key>b2</v:key>
+      
+      <v:combine>
+        <v:string>(</v:string>
+        <v:string>)</v:string>
+      </v:combine>
+    </v:def>
+    <v:def id="[] and &lt;&gt;">
+      
+      <v:key>b1</v:key>
+      <v:key>b2</v:key>
+      
+      <v:collect-group>
+        <v:combine>
+          <v:string>[</v:string>
+          <v:string>]</v:string>
+        </v:combine>
+        <v:combine-group>
+          <v:val>
+            <v:string>&lt;</v:string>
+          </v:val>
+          <v:val>
+            <v:string>&gt;</v:string>
+          </v:val>
+        </v:combine-group>
+      </v:collect-group>
+    </v:def>
+    <v:combine-group>
+      <v:collect-group>
+        <v:ref id="student"></v:ref>
+        <v:ref id="prod"></v:ref>
+      </v:collect-group>
+      <v:collect-group>
+        <v:ref id="()"></v:ref>
+        <v:ref id="[] and &lt;&gt;"></v:ref>
+      </v:collect-group>
+      <v:val>
+        <v:string>RuntimeException</v:string>
+      </v:val>
+    </v:combine-group>
+    <v:combine-group>
+      <v:collect-group>
+        <v:ref id="student"></v:ref>
+        <v:ref id="state"></v:ref>
+      </v:collect-group>
+      <v:ref id="()"></v:ref>
+      <v:val>
+        <v:string>IllegalArgumentException</v:string>
+      </v:val>
+    </v:combine-group>
+    <v:combine-group>
+      <v:collect-group>
+        <v:ref id="prod"></v:ref>
+        <v:ref id="state"></v:ref>
+      </v:collect-group>
+      <v:ref id="[] and &lt;&gt;"></v:ref>
+      <v:collect>
+        <v:string>Exception</v:string>
+        <v:string>IllegalArgumentException</v:string>
+      </v:collect>
+    </v:combine-group>
+  </v:collect-group>
+</v:root>

@@ -1,0 +1,24 @@
+module org.proforma.variability {
+    requires java.logging;
+    
+    requires transitive proforma.xml21;
+    
+    requires static javafx.controls;
+    requires static javafx.graphics;
+    requires static javafx.web;
+
+    requires org.graalvm.sdk;
+    requires com.github.mustachejava;
+    
+    exports org.proforma.variability.transfer;
+    exports org.proforma.variability.util;
+    exports org.proforma.variability.fx;
+    opens org.proforma.variability.transfer;
+
+    // The following are needed for tests only.
+    //requires static proforma.util;
+    // This is a bad workaround to get rid off compile errors in eclipse for the tests to be compiled on the classpath
+    //requires static junit;
+    
+
+}

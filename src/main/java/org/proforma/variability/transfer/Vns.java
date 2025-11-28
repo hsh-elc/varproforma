@@ -1,0 +1,20 @@
+package org.proforma.variability.transfer;
+
+import javax.xml.bind.annotation.XmlTransient;
+
+/**
+ * A variant of a nominal scaled type.
+ */
+@XmlTransient
+public abstract class Vns extends V {
+
+    @Override
+    public abstract Vns clone();
+
+    @Override
+    public boolean isIntervalScaled() {
+        return false;
+    }
+    
+
+}

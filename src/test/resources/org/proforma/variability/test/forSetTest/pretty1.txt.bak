@@ -1,0 +1,17 @@
+ c             | v   | n   
+---------------+-----+-----
+ S:Program     | C:a | I:1 
+ S:Program     | C:i | I:1 
+ S:Program     | C:o | I:4 
+ S:Program     | C:u | I:2 
+ S:Program     | C:e | I:3 
+ S:Counter     | C:a | I:1 
+ S:Counter     | C:i | I:1 
+ S:Counter     | C:o | I:4 
+ S:Counter     | C:u | I:2 
+ S:Counter     | C:e | I:3 
+ S:CountVowels | C:a | I:1 
+ S:CountVowels | C:i | I:1 
+ S:CountVowels | C:o | I:4 
+ S:CountVowels | C:u | I:2 
+ S:CountVowels | C:e | I:3 

@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<v:root xmlns:v="urn:proforma:variability:v1.0">
+  <v:combine-group>
+    <v:collect>
+      <v:string>Program</v:string>
+      <v:string>Counter</v:string>
+      <v:string>CountVowels</v:string>
+    </v:collect>
+    <v:collect>
+      <v:character>97</v:character>
+      <v:character>101</v:character>
+      <v:character>105</v:character>
+      <v:character>111</v:character>
+      <v:character>117</v:character>
+    </v:collect>
+    <v:derive data-type="integer" aggregate-type="value">
+      <v:js-source><![CDATA[/**
+ * Calculates a new variation point value from other variation point values.
+ * @param {Object} obj - an object with variation point values
+ * @param {String} obj.v - lower case vowel character
+ * @returns {Number} number of vowels v in the text The%20quick%20brown%20fox%20jumps%20over%20the%20lazy%20dog.
+ */
+function apply(obj) {
+    "use strict"
+    var text= decodeURIComponent("The%20quick%20brown%20fox%20jumps%20over%20the%20lazy%20dog.").toLowerCase();
+    var cnt= 0;
+    for (var i = 0, len = text.length; i < len; i++) {
+    	if (text.charAt(i) === obj.v) cnt++;
+    }
+    return cnt;
+};
+]]></v:js-source>
+    </v:derive>
+  </v:combine-group>
+  <v:cvp>
+    <v:vp key="c" type="string"></v:vp>
+    <v:vp key="v" type="character"></v:vp>
+    <v:vp key="n" type="integer"></v:vp>
+  </v:cvp>
+</v:root>

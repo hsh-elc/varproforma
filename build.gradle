@@ -1,0 +1,377 @@
+plugins {
+    id 'java-library'
+    id 'org.openjfx.javafxplugin' version '0.0.12'
+    id 'maven-publish'
+}
+
+logger.warn("Running JVM version: "+JavaVersion.current())
+logger.warn("Building for JDK $javaTargetVersion");
+
+group = 'proforma'
+version = '1.0.0'
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = 'varproforma'
+            from components.java
+            pom {
+                name = 'varproforma'
+                description = 'A library for the XML exchange format for variable programming exercises'
+                url = 'https://github.com/ProFormA/varproformaxml'
+            }
+        }
+    }
+    repositories {
+        maven {
+            // create maven distributable in folder build/pom
+            url = layout.buildDirectory.dir('pom')
+        }
+    }
+}
+
+
+if ("$javaTargetVersion" == "17") {
+    project.ext.javaFXTargetVersion = "17.0.12";
+} else if ("$javaTargetVersion" == "11") {
+    project.ext.javaFXTargetVersion = "11.0.2";
+} else {
+    throw new AssertionError("Unexpected 'javaTargetVersion'=$javaTargetVersion");
+}
+
+logger.warn("Building varproforma for JavaFX $javaFXTargetVersion");
+
+def assertGradleStartedWithCompatibleJdk() {
+    if ("$javaTargetVersion" == "11") {
+        assert JavaVersion.current().isCompatibleWith(JavaVersion.getVersionForMajor(11)) : "You must start gradle build with a Java 11 compatible JDK"
+    } else if ("$javaTargetVersion" == "17") {
+        assert JavaVersion.current().isCompatibleWith(JavaVersion.getVersionForMajor(17)) : "You must start gradle build with a Java 17 compatible JDK"
+    } else {
+        throw new AssertionError("Unknown gradle property 'javaTargetVersion' = $javaTargetVersion")
+    }
+}
+
+
+def getPathToJavaBinFolder() {
+    assertGradleStartedWithCompatibleJdk()
+    if (JavaVersion.current().getMajorVersion() != "$javaTargetVersion") {
+        def propertyKey = "jdk${javaTargetVersion}home"
+        assert project.hasProperty(propertyKey) : "Set the property '$propertyKey' in your your user gradle.properties pointing to a Java SE Develoment Kit $javaTargetVersion installation or use a JDK $javaTargetVersion runtime when starting gradle"
+        assert file(project.getProperty(propertyKey) + "/bin").isDirectory() : "The property '$propertyKey' does not seem to point to a JDK installation. Cannot find directory ${project.getProperty(propertyKey)}/bin"
+        return project.getProperty(propertyKey) + "/bin"
+    }
+    logger.info("System property java.home = "+System.getProperty('java.home'))
+    def pathToBin
+    if (JavaVersion.current().isJava9Compatible()) {
+        pathToBin= new File(file(System.getProperty('java.home')), "bin")
+    } else {
+        pathToBin= new File(file(System.getProperty('java.home')).parentFile, "bin")
+    }
+    assert pathToBin.isDirectory() : "You must start gradle build with a Java $javaTargetVersion compatible JDK"
+    return pathToBin
+}
+
+
+
+def javaExecutablesPath = getPathToJavaBinFolder()
+def javaExecutables = [:].withDefault { execName ->
+    def executable = new File(javaExecutablesPath, execName)
+    if (!executable.exists()) executable= new File(javaExecutablesPath, execName+".exe")
+    assert executable.exists() : "There is no ${execName}[.exe] executable in ${javaExecutablesPath}"
+    executable
+}
+ext.javaExecutables = javaExecutables
+ 
+configurations {
+	external
+	compile.extendsFrom external
+    impldeps { transitive = false }
+    apideps { transitive = false }
+    modulesForTest
+	schemagenTool
+}
+
+
+sourceSets {
+    test {
+        resources.exclude "**"
+    }
+}
+
+repositories {
+    maven {
+        url = uri("file://${projectDir}/maven-repository")
+    }
+    mavenCentral()
+}
+
+
+javafx {
+    version = "$javaFXTargetVersion"
+    modules = ['javafx.controls', 'javafx.graphics', 'javafx.web']
+}
+
+
+dependencies {
+	schemagenTool "org.glassfish.jaxb:jaxb-jxc:2.3.2"
+	schemagenTool files("${System.properties['java.home']}/../lib/tools.jar")
+
+    external "org.graalvm.js:js:21.3.14" 
+    
+    external "com.github.spullara.mustache.java:compiler:0.9.14"
+    
+    impldeps "org.glassfish.jaxb:jaxb-runtime:2.3.2";
+
+    apideps "proforma:proformaxml-2-1:0.4.0"
+    
+    modulesForTest "proforma:proformautil:0.4.0"
+    modulesForTest "junit:junit:4.13.2"
+}
+
+// see https://docs.gradle.org/7.0/userguide/upgrading_version_6.html#potential_breaking_changes_3
+configurations.implementation.extendsFrom(configurations.impldeps)
+configurations.api.extendsFrom(configurations.apideps)
+configurations.implementation.extendsFrom(configurations.external)
+configurations.testCompileOnly.extendsFrom(configurations.modulesForTest)
+
+// This is a bad workaround for getting rid of compile errors in eclipse for the tests to be compiled on the classpath
+//configurations.implementation.extendsFrom(configurations.modulesForTest)
+
+
+javadoc {
+    failOnError = false
+}
+
+tasks.jar {
+    from sourceSets.main.output
+    includeEmptyDirs = false
+    into("META-INF/maven/${project.group}/${project.name}") {
+        from generatePomFileForMavenJavaPublication
+        rename { it.replace('pom-default.xml', 'pom.xml') }
+    }
+    doFirst {
+		manifest.attributes(
+				"Created-By": "${System.properties['java.version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})".toString(),
+				//"Created-By": JavaVersion.current(),
+				"Specification-Title": "varproforma",
+				"Specification-Version": project.version,
+				"Specification-Vendor": "Hochschule Hannover, Robert Garmann",
+				"Implementation-Title": "varproforma",
+				"Implementation-Version": project.version,
+				"Implementation-Vendor": "Hochschule Hannover, Robert Garmann")
+    }
+}
+
+
+test {
+    testLogging {
+        // Make sure output from
+        // standard out or error is shown
+        // in Gradle output.
+        //showStandardStreams = true
+    }
+}
+
+def createSchemaTask(Project prj, String taskName, List<String> excludedPatterns, String filename) {
+    prj.tasks.create(name : taskName, type: Exec, dependsOn: prj.configurations.schemagenTool) {
+        dependsOn prj.compileJava
+        def destDir = 'build/schemas/'+taskName
+        def destFile = prj.file(destDir + "/" + filename)
+        outputs.files(destFile)
+
+        def sources= prj.fileTree("src/main/java").matching { ps ->
+            ps.exclude '**/XmlNamespace.java'
+            ps.exclude '**/package-info.java'
+            ps.exclude '**/module-info.java'
+            if (excludedPatterns != null) {
+                ps.exclude excludedPatterns
+            }
+        }.files
+        inputs.files(sources)
+        inputs.files(prj.configurations.compileClasspath.files)
+        inputs.files(prj.fileTree(prj.compileJava.destinationDir))
+        
+        workingDir prj.projectDir
+        executable javaExecutables.java
+
+        doFirst {
+            prj.file(destDir).mkdirs()
+            def a= [ '--module-path', prj.configurations.schemagenTool.asPath,
+                '-m', 'com.sun.tools.jxc/com.sun.tools.jxc.SchemaGeneratorFacade',
+                '-d', destDir,
+                '-classpath', "${prj.compileJava.destinationDir}${File.pathSeparator}${prj.configurations.compileClasspath.asPath}"
+                ]
+//            def a= [ '-cp', prj.configurations.schemagenTool.asPath,
+//                'com.sun.tools.jxc.SchemaGeneratorFacade',
+//                '-d', destDir,
+//                '-classpath', "${prj.compileJava.destinationDir}${File.pathSeparator}${prj.configurations.compileClasspath.asPath}"
+//                ]
+            a.addAll(sources)
+            args a
+        }
+        
+        doLast {
+            java.nio.file.Files.move(
+                prj.file(destDir + '/schema1.xsd').toPath(), 
+                destFile.toPath(), 
+                java.nio.file.StandardCopyOption.REPLACE_EXISTING)
+        }
+    }
+}
+
+
+
+// XSD generation
+createSchemaTask(project, 'schema', [ 
+        '**/edu/princeton/**/*.java',
+        '**/org/proforma/variability/fx/*.java', 
+        '**/org/proforma/variability/fx/sample/*.java',
+        '**/org/proforma/variability/transfer/Domain.java',
+        '**/org/proforma/variability/util/*.java',
+    ], 'proforma_variability_v1.0.xsd')
+
+
+// https://discuss.gradle.org/t/how-to-set-the-module-path-project-jigsaw-for-eclipse-projects-via-gradle/26801/3
+boolean isLibrary(entry) { return entry.properties.kind.equals('lib') }
+boolean isTestScope(entry) { return entry.entryAttributes.get('gradle_used_by_scope').equals('test'); }
+boolean isModule(entry) { isLibrary(entry) && !isTestScope(entry); }
+boolean isSource(entry) { return entry.properties.kind.equals('src'); }
+boolean isProjectDependency(entry) { return entry instanceof org.gradle.plugins.ide.eclipse.model.ProjectDependency; }
+
+
+def addEclipseArtifactsTo(Project prj, ArrayList<String> refdPrjs) {
+    prj.apply(plugin: 'eclipse')
+    javaTargetVersion = project.javaTargetVersion
+    prj.eclipse {
+        if (prj.plugins.hasPlugin('java')) {
+            jdt {
+                sourceCompatibility = javaTargetVersion
+                targetCompatibility = javaTargetVersion
+                javaRuntimeName = "JavaSE-${javaTargetVersion}"
+            }
+            classpath {
+                file {
+                    whenMerged { classpath ->
+                        def output = new org.gradle.plugins.ide.eclipse.model.Output("build/eclipsebin")
+                        entries += output
+                        entries.each { entry ->
+logger.info("entry: " + entry.toString())
+                            if (entry instanceof org.gradle.plugins.ide.eclipse.model.Container) {
+                                def con = (org.gradle.plugins.ide.eclipse.model.Container)entry
+                                def p = con.path
+                                if (p.contains("org.eclipse.buildship.core.gradleclasspathcontainer")) {
+                                    entry.entryAttributes['module'] = 'true'
+                                }
+/*
+                                // https://stackoverflow.com/a/32062263
+                                // and
+                                // https://github.com/eclipse/buildship/issues/573#issuecomment-330166396
+                                if (p.contains("JRE_CONTAINER") && p.contains("StandardVMType")) {
+                                    def subject = "javafx/**"
+                                    Set<org.gradle.plugins.ide.eclipse.model.AccessRule> rules = con.getAccessRules()
+                                    def fxRule = null
+                                    for (rule in rules) { 
+                                        if (rule.pattern.equals(subject)) {
+                                            fxRule = rule
+                                            break
+                                        }
+                                    }
+                                    if (fxRule == null) { 
+                                        fxRule = new org.gradle.plugins.ide.eclipse.model.AccessRule("accessible", "javafx/**")
+                                        rules.add(fxRule)
+                                    } else {
+                                        fxRule.setKind("accessible")
+                                    }
+                                }
+*/
+                            }
+                        }
+                        //entries.findAll { isModule(it) }.each { it.entryAttributes['module'] = 'true' } //https://github.com/eclipse/buildship/issues/620
+                        
+                        // https://discuss.gradle.org/t/how-to-set-the-module-path-project-jigsaw-for-eclipse-projects-via-gradle/26801/3
+                        entries.findAll { isModule(it) }.each { //(1)
+logger.info("module: " + it)
+                            it.entryAttributes['module'] = 'true'
+                        }
+                        entries.findAll { isProjectDependency(it) }.each { //(1)
+logger.info("module: " + it)
+                            it.entryAttributes['module'] = 'true'
+                        }
+                        entries.findAll { isSource(it) && isTestScope(it) }.each {
+logger.info("test: " + it)
+                            it.entryAttributes['test'] = 'true'
+                        }
+                        entries.findAll { isLibrary(it) && isTestScope(it) }.each {
+logger.info("test: " + it)
+                            it.entryAttributes['test'] = 'true'
+                        }
+//entries.each { entry -> 
+//    logger.warn("--------------------------------------------------------")
+//    logger.warn(entry.toString())
+//    entry.properties.each { p ->
+//        logger.warn(p.toString())
+//    } 
+/*
+    if (entry instanceof org.gradle.plugins.ide.eclipse.model.ProjectDependency) {
+        def depen = (org.gradle.plugins.ide.eclipse.model.ProjectDependency)entry
+        if (depen.publication.file.toString().contains("Proforma.jar")) {
+            logger.warn("--------------------------------------------------------")
+            logger.warn(entry.toString())
+            entry.properties.each { p ->
+                logger.warn(p.toString())
+            } 
+        }
+    }
+    if (entry instanceof org.gradle.plugins.ide.eclipse.model.Library) {
+        def libr = (org.gradle.plugins.ide.eclipse.model.Library)entry
+        if (libr.path.toString().contains("Proforma.jar")) {
+            logger.warn("--------------------------------------------------------")
+            logger.warn(entry.toString())
+            entry.properties.each { p ->
+                logger.warn(p.toString())
+            } 
+        }
+    }
+*/
+//}
+                    }
+                }
+            }
+        }
+        project {
+            natures 'org.eclipse.buildship.core.gradleprojectnature' // https://discuss.gradle.org/t/how-to-set-the-module-path-project-jigsaw-for-eclipse-projects-via-gradle/26801/2
+/*
+            def tmp= new ArrayList<String>()
+            if (refdPrjs != null) {
+                refdPrjs.each {
+                    def name= it
+                    if (name.startsWith(":")) name= name.substring(1)
+                    if (name.length() == 0) name= "development" // the root project
+                    tmp << name
+                    referencedProjects name
+                }
+            }
+            refdPrjs= tmp
+            if (prj.plugins.hasPlugin('java')) {
+                prj.configurations.compile.dependencies.each {
+                    if (it instanceof ProjectDependency) {
+                        def pn= it.dependencyProject.name
+                        if (refdPrjs == null || !refdPrjs.contains(pn)){
+                            //println "   "+prj.name+" references "+pn
+                            referencedProjects pn
+                        }
+                    }
+                }
+            }
+*/
+        }
+    }
+}
+
+addEclipseArtifactsTo(project, null)

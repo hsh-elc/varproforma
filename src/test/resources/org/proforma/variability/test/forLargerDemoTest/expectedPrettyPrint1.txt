@@ -1,0 +1,156 @@
+ c          | tld       | sld          | n               | m                      | ms                      | nval      | mval       | b1  | b2  | e                          
+------------+-----------+--------------+-----------------+------------------------+-------------------------+-----------+------------+-----+-----+----------------------------
+ S:Customer | S:com     | S:company    | S:customer name | S:customer id          | S:customer ids          | S:Johnson | I:77865    | S:+ | S:+ | S:Error                    
+ S:Part     | S:co      | S:part0      | S:part name     | S:part number          | S:part numbers          | S:thing   | I:332      | S:{ | S:} | S:Throwable                
+ S:Part     | S:com     | S:part0      | S:part name     | S:part number          | S:part numbers          | S:thing   | I:332      | S:{ | S:} | S:Throwable                
+ S:Part     | S:company | S:part0      | S:part name     | S:part number          | S:part numbers          | S:thing   | I:332      | S:{ | S:} | S:Throwable                
+ S:Piece    | S:co      | S:piece2     | S:piece name    | S:piece number         | S:piece numbers         | S:thing   | I:332      | S:{ | S:} | S:Throwable                
+ S:Piece    | S:com     | S:piece3     | S:piece name    | S:piece number         | S:piece numbers         | S:thing   | I:332      | S:{ | S:} | S:Throwable                
+ S:Piece    | S:company | S:piece7     | S:piece name    | S:piece number         | S:piece numbers         | S:thing   | I:332      | S:{ | S:} | S:Throwable                
+ S:Prod     | S:com     | S:mymart     | S:product name  | S:article number       | S:article numbers       | S:Bread   | I:78266    | S:( | S:) | S:RuntimeException         
+ S:Prod     | S:com     | S:mymart     | S:product name  | S:article number       | S:article numbers       | S:Bread   | I:78266    | S:< | S:> | S:Exception                
+ S:Prod     | S:com     | S:mymart     | S:product name  | S:article number       | S:article numbers       | S:Bread   | I:78266    | S:< | S:> | S:IllegalArgumentException 
+ S:Prod     | S:com     | S:mymart     | S:product name  | S:article number       | S:article numbers       | S:Bread   | I:78266    | S:< | S:> | S:RuntimeException         
+ S:Prod     | S:com     | S:mymart     | S:product name  | S:article number       | S:article numbers       | S:Bread   | I:78266    | S:[ | S:] | S:Exception                
+ S:Prod     | S:com     | S:mymart     | S:product name  | S:article number       | S:article numbers       | S:Bread   | I:78266    | S:[ | S:] | S:IllegalArgumentException 
+ S:Prod     | S:com     | S:mymart     | S:product name  | S:article number       | S:article numbers       | S:Bread   | I:78266    | S:[ | S:] | S:RuntimeException         
+ S:Prod     | S:com     | S:mymart     | S:product name  | S:article number       | S:article numbers       | S:Butter  | I:78266    | S:( | S:) | S:RuntimeException         
+ S:Prod     | S:com     | S:mymart     | S:product name  | S:article number       | S:article numbers       | S:Butter  | I:78266    | S:< | S:> | S:Exception                
+ S:Prod     | S:com     | S:mymart     | S:product name  | S:article number       | S:article numbers       | S:Butter  | I:78266    | S:< | S:> | S:IllegalArgumentException 
+ S:Prod     | S:com     | S:mymart     | S:product name  | S:article number       | S:article numbers       | S:Butter  | I:78266    | S:< | S:> | S:RuntimeException         
+ S:Prod     | S:com     | S:mymart     | S:product name  | S:article number       | S:article numbers       | S:Butter  | I:78266    | S:[ | S:] | S:Exception                
+ S:Prod     | S:com     | S:mymart     | S:product name  | S:article number       | S:article numbers       | S:Butter  | I:78266    | S:[ | S:] | S:IllegalArgumentException 
+ S:Prod     | S:com     | S:mymart     | S:product name  | S:article number       | S:article numbers       | S:Butter  | I:78266    | S:[ | S:] | S:RuntimeException         
+ S:Prod     | S:com     | S:mymart     | S:product name  | S:article number       | S:article numbers       | S:Ketchup | I:78266    | S:( | S:) | S:RuntimeException         
+ S:Prod     | S:com     | S:mymart     | S:product name  | S:article number       | S:article numbers       | S:Ketchup | I:78266    | S:< | S:> | S:Exception                
+ S:Prod     | S:com     | S:mymart     | S:product name  | S:article number       | S:article numbers       | S:Ketchup | I:78266    | S:< | S:> | S:IllegalArgumentException 
+ S:Prod     | S:com     | S:mymart     | S:product name  | S:article number       | S:article numbers       | S:Ketchup | I:78266    | S:< | S:> | S:RuntimeException         
+ S:Prod     | S:com     | S:mymart     | S:product name  | S:article number       | S:article numbers       | S:Ketchup | I:78266    | S:[ | S:] | S:Exception                
+ S:Prod     | S:com     | S:mymart     | S:product name  | S:article number       | S:article numbers       | S:Ketchup | I:78266    | S:[ | S:] | S:IllegalArgumentException 
+ S:Prod     | S:com     | S:mymart     | S:product name  | S:article number       | S:article numbers       | S:Ketchup | I:78266    | S:[ | S:] | S:RuntimeException         
+ S:State    | S:ch      | S:kanton     | S:state name    | S:number of residents  | S:numbers of residents  | S:Waadt   | I:784681   | S:( | S:) | S:IllegalArgumentException 
+ S:State    | S:ch      | S:kanton     | S:state name    | S:number of residents  | S:numbers of residents  | S:Waadt   | I:784681   | S:< | S:> | S:Exception                
+ S:State    | S:ch      | S:kanton     | S:state name    | S:number of residents  | S:numbers of residents  | S:Waadt   | I:784681   | S:< | S:> | S:IllegalArgumentException 
+ S:State    | S:ch      | S:kanton     | S:state name    | S:number of residents  | S:numbers of residents  | S:Waadt   | I:784681   | S:[ | S:] | S:Exception                
+ S:State    | S:ch      | S:kanton     | S:state name    | S:number of residents  | S:numbers of residents  | S:Waadt   | I:784681   | S:[ | S:] | S:IllegalArgumentException 
+ S:State    | S:de      | S:land       | S:state name    | S:number of residents  | S:numbers of residents  | S:Bayern  | I:12860010 | S:( | S:) | S:IllegalArgumentException 
+ S:State    | S:de      | S:land       | S:state name    | S:number of residents  | S:numbers of residents  | S:Bayern  | I:12860010 | S:< | S:> | S:Exception                
+ S:State    | S:de      | S:land       | S:state name    | S:number of residents  | S:numbers of residents  | S:Bayern  | I:12860010 | S:< | S:> | S:IllegalArgumentException 
+ S:State    | S:de      | S:land       | S:state name    | S:number of residents  | S:numbers of residents  | S:Bayern  | I:12860010 | S:[ | S:] | S:Exception                
+ S:State    | S:de      | S:land       | S:state name    | S:number of residents  | S:numbers of residents  | S:Bayern  | I:12860010 | S:[ | S:] | S:IllegalArgumentException 
+ S:State    | S:de      | S:staat      | S:state name    | S:number of residents  | S:numbers of residents  | S:Bayern  | I:12860010 | S:( | S:) | S:IllegalArgumentException 
+ S:State    | S:de      | S:staat      | S:state name    | S:number of residents  | S:numbers of residents  | S:Bayern  | I:12860010 | S:< | S:> | S:Exception                
+ S:State    | S:de      | S:staat      | S:state name    | S:number of residents  | S:numbers of residents  | S:Bayern  | I:12860010 | S:< | S:> | S:IllegalArgumentException 
+ S:State    | S:de      | S:staat      | S:state name    | S:number of residents  | S:numbers of residents  | S:Bayern  | I:12860010 | S:[ | S:] | S:Exception                
+ S:State    | S:de      | S:staat      | S:state name    | S:number of residents  | S:numbers of residents  | S:Bayern  | I:12860010 | S:[ | S:] | S:IllegalArgumentException 
+ S:State    | S:net     | S:geo        | S:state name    | S:number of residents  | S:numbers of residents  | S:State   | I:1234567  | S:( | S:) | S:IllegalArgumentException 
+ S:State    | S:net     | S:geo        | S:state name    | S:number of residents  | S:numbers of residents  | S:State   | I:1234567  | S:< | S:> | S:Exception                
+ S:State    | S:net     | S:geo        | S:state name    | S:number of residents  | S:numbers of residents  | S:State   | I:1234567  | S:< | S:> | S:IllegalArgumentException 
+ S:State    | S:net     | S:geo        | S:state name    | S:number of residents  | S:numbers of residents  | S:State   | I:1234567  | S:[ | S:] | S:Exception                
+ S:State    | S:net     | S:geo        | S:state name    | S:number of residents  | S:numbers of residents  | S:State   | I:1234567  | S:[ | S:] | S:IllegalArgumentException 
+ S:State    | S:org     | S:geo        | S:state name    | S:number of residents  | S:numbers of residents  | S:State   | I:1234567  | S:( | S:) | S:IllegalArgumentException 
+ S:State    | S:org     | S:geo        | S:state name    | S:number of residents  | S:numbers of residents  | S:State   | I:1234567  | S:< | S:> | S:Exception                
+ S:State    | S:org     | S:geo        | S:state name    | S:number of residents  | S:numbers of residents  | S:State   | I:1234567  | S:< | S:> | S:IllegalArgumentException 
+ S:State    | S:org     | S:geo        | S:state name    | S:number of residents  | S:numbers of residents  | S:State   | I:1234567  | S:[ | S:] | S:Exception                
+ S:State    | S:org     | S:geo        | S:state name    | S:number of residents  | S:numbers of residents  | S:State   | I:1234567  | S:[ | S:] | S:IllegalArgumentException 
+ S:State    | S:uk      | S:region     | S:state name    | S:number of residents  | S:numbers of residents  | S:Wales   | I:3092000  | S:( | S:) | S:IllegalArgumentException 
+ S:State    | S:uk      | S:region     | S:state name    | S:number of residents  | S:numbers of residents  | S:Wales   | I:3092000  | S:< | S:> | S:Exception                
+ S:State    | S:uk      | S:region     | S:state name    | S:number of residents  | S:numbers of residents  | S:Wales   | I:3092000  | S:< | S:> | S:IllegalArgumentException 
+ S:State    | S:uk      | S:region     | S:state name    | S:number of residents  | S:numbers of residents  | S:Wales   | I:3092000  | S:[ | S:] | S:Exception                
+ S:State    | S:uk      | S:region     | S:state name    | S:number of residents  | S:numbers of residents  | S:Wales   | I:3092000  | S:[ | S:] | S:IllegalArgumentException 
+ S:Student  | S:edu     | S:domain     | S:name          | S:matriculation number | S:matriculation numbers | S:Baldwin | I:1000000  | S:( | S:) | S:IllegalArgumentException 
+ S:Student  | S:edu     | S:domain     | S:name          | S:matriculation number | S:matriculation numbers | S:Baldwin | I:1000000  | S:( | S:) | S:RuntimeException         
+ S:Student  | S:edu     | S:domain     | S:name          | S:matriculation number | S:matriculation numbers | S:Baldwin | I:1000000  | S:< | S:> | S:RuntimeException         
+ S:Student  | S:edu     | S:domain     | S:name          | S:matriculation number | S:matriculation numbers | S:Baldwin | I:1000000  | S:[ | S:] | S:RuntimeException         
+ S:Student  | S:edu     | S:domain     | S:name          | S:matriculation number | S:matriculation numbers | S:Doe     | I:1000000  | S:( | S:) | S:IllegalArgumentException 
+ S:Student  | S:edu     | S:domain     | S:name          | S:matriculation number | S:matriculation numbers | S:Doe     | I:1000000  | S:( | S:) | S:RuntimeException         
+ S:Student  | S:edu     | S:domain     | S:name          | S:matriculation number | S:matriculation numbers | S:Doe     | I:1000000  | S:< | S:> | S:RuntimeException         
+ S:Student  | S:edu     | S:domain     | S:name          | S:matriculation number | S:matriculation numbers | S:Doe     | I:1000000  | S:[ | S:] | S:RuntimeException         
+ S:Student  | S:edu     | S:domain     | S:name          | S:matriculation number | S:matriculation numbers | S:Smith   | I:1000000  | S:( | S:) | S:IllegalArgumentException 
+ S:Student  | S:edu     | S:domain     | S:name          | S:matriculation number | S:matriculation numbers | S:Smith   | I:1000000  | S:( | S:) | S:RuntimeException         
+ S:Student  | S:edu     | S:domain     | S:name          | S:matriculation number | S:matriculation numbers | S:Smith   | I:1000000  | S:< | S:> | S:RuntimeException         
+ S:Student  | S:edu     | S:domain     | S:name          | S:matriculation number | S:matriculation numbers | S:Smith   | I:1000000  | S:[ | S:] | S:RuntimeException         
+ S:Student  | S:edu     | S:domain     | S:name          | S:student id           | S:student ids           | S:Baldwin | I:1000000  | S:( | S:) | S:IllegalArgumentException 
+ S:Student  | S:edu     | S:domain     | S:name          | S:student id           | S:student ids           | S:Baldwin | I:1000000  | S:( | S:) | S:RuntimeException         
+ S:Student  | S:edu     | S:domain     | S:name          | S:student id           | S:student ids           | S:Baldwin | I:1000000  | S:< | S:> | S:RuntimeException         
+ S:Student  | S:edu     | S:domain     | S:name          | S:student id           | S:student ids           | S:Baldwin | I:1000000  | S:[ | S:] | S:RuntimeException         
+ S:Student  | S:edu     | S:domain     | S:name          | S:student id           | S:student ids           | S:Doe     | I:1000000  | S:( | S:) | S:IllegalArgumentException 
+ S:Student  | S:edu     | S:domain     | S:name          | S:student id           | S:student ids           | S:Doe     | I:1000000  | S:( | S:) | S:RuntimeException         
+ S:Student  | S:edu     | S:domain     | S:name          | S:student id           | S:student ids           | S:Doe     | I:1000000  | S:< | S:> | S:RuntimeException         
+ S:Student  | S:edu     | S:domain     | S:name          | S:student id           | S:student ids           | S:Doe     | I:1000000  | S:[ | S:] | S:RuntimeException         
+ S:Student  | S:edu     | S:domain     | S:name          | S:student id           | S:student ids           | S:Smith   | I:1000000  | S:( | S:) | S:IllegalArgumentException 
+ S:Student  | S:edu     | S:domain     | S:name          | S:student id           | S:student ids           | S:Smith   | I:1000000  | S:( | S:) | S:RuntimeException         
+ S:Student  | S:edu     | S:domain     | S:name          | S:student id           | S:student ids           | S:Smith   | I:1000000  | S:< | S:> | S:RuntimeException         
+ S:Student  | S:edu     | S:domain     | S:name          | S:student id           | S:student ids           | S:Smith   | I:1000000  | S:[ | S:] | S:RuntimeException         
+ S:Student  | S:edu     | S:university | S:name          | S:matriculation number | S:matriculation numbers | S:Baldwin | I:1000000  | S:( | S:) | S:IllegalArgumentException 
+ S:Student  | S:edu     | S:university | S:name          | S:matriculation number | S:matriculation numbers | S:Baldwin | I:1000000  | S:( | S:) | S:RuntimeException         
+ S:Student  | S:edu     | S:university | S:name          | S:matriculation number | S:matriculation numbers | S:Baldwin | I:1000000  | S:< | S:> | S:RuntimeException         
+ S:Student  | S:edu     | S:university | S:name          | S:matriculation number | S:matriculation numbers | S:Baldwin | I:1000000  | S:[ | S:] | S:RuntimeException         
+ S:Student  | S:edu     | S:university | S:name          | S:matriculation number | S:matriculation numbers | S:Doe     | I:1000000  | S:( | S:) | S:IllegalArgumentException 
+ S:Student  | S:edu     | S:university | S:name          | S:matriculation number | S:matriculation numbers | S:Doe     | I:1000000  | S:( | S:) | S:RuntimeException         
+ S:Student  | S:edu     | S:university | S:name          | S:matriculation number | S:matriculation numbers | S:Doe     | I:1000000  | S:< | S:> | S:RuntimeException         
+ S:Student  | S:edu     | S:university | S:name          | S:matriculation number | S:matriculation numbers | S:Doe     | I:1000000  | S:[ | S:] | S:RuntimeException         
+ S:Student  | S:edu     | S:university | S:name          | S:matriculation number | S:matriculation numbers | S:Smith   | I:1000000  | S:( | S:) | S:IllegalArgumentException 
+ S:Student  | S:edu     | S:university | S:name          | S:matriculation number | S:matriculation numbers | S:Smith   | I:1000000  | S:( | S:) | S:RuntimeException         
+ S:Student  | S:edu     | S:university | S:name          | S:matriculation number | S:matriculation numbers | S:Smith   | I:1000000  | S:< | S:> | S:RuntimeException         
+ S:Student  | S:edu     | S:university | S:name          | S:matriculation number | S:matriculation numbers | S:Smith   | I:1000000  | S:[ | S:] | S:RuntimeException         
+ S:Student  | S:edu     | S:university | S:name          | S:student id           | S:student ids           | S:Baldwin | I:1000000  | S:( | S:) | S:IllegalArgumentException 
+ S:Student  | S:edu     | S:university | S:name          | S:student id           | S:student ids           | S:Baldwin | I:1000000  | S:( | S:) | S:RuntimeException         
+ S:Student  | S:edu     | S:university | S:name          | S:student id           | S:student ids           | S:Baldwin | I:1000000  | S:< | S:> | S:RuntimeException         
+ S:Student  | S:edu     | S:university | S:name          | S:student id           | S:student ids           | S:Baldwin | I:1000000  | S:[ | S:] | S:RuntimeException         
+ S:Student  | S:edu     | S:university | S:name          | S:student id           | S:student ids           | S:Doe     | I:1000000  | S:( | S:) | S:IllegalArgumentException 
+ S:Student  | S:edu     | S:university | S:name          | S:student id           | S:student ids           | S:Doe     | I:1000000  | S:( | S:) | S:RuntimeException         
+ S:Student  | S:edu     | S:university | S:name          | S:student id           | S:student ids           | S:Doe     | I:1000000  | S:< | S:> | S:RuntimeException         
+ S:Student  | S:edu     | S:university | S:name          | S:student id           | S:student ids           | S:Doe     | I:1000000  | S:[ | S:] | S:RuntimeException         
+ S:Student  | S:edu     | S:university | S:name          | S:student id           | S:student ids           | S:Smith   | I:1000000  | S:( | S:) | S:IllegalArgumentException 
+ S:Student  | S:edu     | S:university | S:name          | S:student id           | S:student ids           | S:Smith   | I:1000000  | S:( | S:) | S:RuntimeException         
+ S:Student  | S:edu     | S:university | S:name          | S:student id           | S:student ids           | S:Smith   | I:1000000  | S:< | S:> | S:RuntimeException         
+ S:Student  | S:edu     | S:university | S:name          | S:student id           | S:student ids           | S:Smith   | I:1000000  | S:[ | S:] | S:RuntimeException         
+ S:Student  | S:org     | S:domain     | S:name          | S:matriculation number | S:matriculation numbers | S:Baldwin | I:1000000  | S:( | S:) | S:IllegalArgumentException 
+ S:Student  | S:org     | S:domain     | S:name          | S:matriculation number | S:matriculation numbers | S:Baldwin | I:1000000  | S:( | S:) | S:RuntimeException         
+ S:Student  | S:org     | S:domain     | S:name          | S:matriculation number | S:matriculation numbers | S:Baldwin | I:1000000  | S:< | S:> | S:RuntimeException         
+ S:Student  | S:org     | S:domain     | S:name          | S:matriculation number | S:matriculation numbers | S:Baldwin | I:1000000  | S:[ | S:] | S:RuntimeException         
+ S:Student  | S:org     | S:domain     | S:name          | S:matriculation number | S:matriculation numbers | S:Doe     | I:1000000  | S:( | S:) | S:IllegalArgumentException 
+ S:Student  | S:org     | S:domain     | S:name          | S:matriculation number | S:matriculation numbers | S:Doe     | I:1000000  | S:( | S:) | S:RuntimeException         
+ S:Student  | S:org     | S:domain     | S:name          | S:matriculation number | S:matriculation numbers | S:Doe     | I:1000000  | S:< | S:> | S:RuntimeException         
+ S:Student  | S:org     | S:domain     | S:name          | S:matriculation number | S:matriculation numbers | S:Doe     | I:1000000  | S:[ | S:] | S:RuntimeException         
+ S:Student  | S:org     | S:domain     | S:name          | S:matriculation number | S:matriculation numbers | S:Smith   | I:1000000  | S:( | S:) | S:IllegalArgumentException 
+ S:Student  | S:org     | S:domain     | S:name          | S:matriculation number | S:matriculation numbers | S:Smith   | I:1000000  | S:( | S:) | S:RuntimeException         
+ S:Student  | S:org     | S:domain     | S:name          | S:matriculation number | S:matriculation numbers | S:Smith   | I:1000000  | S:< | S:> | S:RuntimeException         
+ S:Student  | S:org     | S:domain     | S:name          | S:matriculation number | S:matriculation numbers | S:Smith   | I:1000000  | S:[ | S:] | S:RuntimeException         
+ S:Student  | S:org     | S:domain     | S:name          | S:student id           | S:student ids           | S:Baldwin | I:1000000  | S:( | S:) | S:IllegalArgumentException 
+ S:Student  | S:org     | S:domain     | S:name          | S:student id           | S:student ids           | S:Baldwin | I:1000000  | S:( | S:) | S:RuntimeException         
+ S:Student  | S:org     | S:domain     | S:name          | S:student id           | S:student ids           | S:Baldwin | I:1000000  | S:< | S:> | S:RuntimeException         
+ S:Student  | S:org     | S:domain     | S:name          | S:student id           | S:student ids           | S:Baldwin | I:1000000  | S:[ | S:] | S:RuntimeException         
+ S:Student  | S:org     | S:domain     | S:name          | S:student id           | S:student ids           | S:Doe     | I:1000000  | S:( | S:) | S:IllegalArgumentException 
+ S:Student  | S:org     | S:domain     | S:name          | S:student id           | S:student ids           | S:Doe     | I:1000000  | S:( | S:) | S:RuntimeException         
+ S:Student  | S:org     | S:domain     | S:name          | S:student id           | S:student ids           | S:Doe     | I:1000000  | S:< | S:> | S:RuntimeException         
+ S:Student  | S:org     | S:domain     | S:name          | S:student id           | S:student ids           | S:Doe     | I:1000000  | S:[ | S:] | S:RuntimeException         
+ S:Student  | S:org     | S:domain     | S:name          | S:student id           | S:student ids           | S:Smith   | I:1000000  | S:( | S:) | S:IllegalArgumentException 
+ S:Student  | S:org     | S:domain     | S:name          | S:student id           | S:student ids           | S:Smith   | I:1000000  | S:( | S:) | S:RuntimeException         
+ S:Student  | S:org     | S:domain     | S:name          | S:student id           | S:student ids           | S:Smith   | I:1000000  | S:< | S:> | S:RuntimeException         
+ S:Student  | S:org     | S:domain     | S:name          | S:student id           | S:student ids           | S:Smith   | I:1000000  | S:[ | S:] | S:RuntimeException         
+ S:Student  | S:org     | S:university | S:name          | S:matriculation number | S:matriculation numbers | S:Baldwin | I:1000000  | S:( | S:) | S:IllegalArgumentException 
+ S:Student  | S:org     | S:university | S:name          | S:matriculation number | S:matriculation numbers | S:Baldwin | I:1000000  | S:( | S:) | S:RuntimeException         
+ S:Student  | S:org     | S:university | S:name          | S:matriculation number | S:matriculation numbers | S:Baldwin | I:1000000  | S:< | S:> | S:RuntimeException         
+ S:Student  | S:org     | S:university | S:name          | S:matriculation number | S:matriculation numbers | S:Baldwin | I:1000000  | S:[ | S:] | S:RuntimeException         
+ S:Student  | S:org     | S:university | S:name          | S:matriculation number | S:matriculation numbers | S:Doe     | I:1000000  | S:( | S:) | S:IllegalArgumentException 
+ S:Student  | S:org     | S:university | S:name          | S:matriculation number | S:matriculation numbers | S:Doe     | I:1000000  | S:( | S:) | S:RuntimeException         
+ S:Student  | S:org     | S:university | S:name          | S:matriculation number | S:matriculation numbers | S:Doe     | I:1000000  | S:< | S:> | S:RuntimeException         
+ S:Student  | S:org     | S:university | S:name          | S:matriculation number | S:matriculation numbers | S:Doe     | I:1000000  | S:[ | S:] | S:RuntimeException         
+ S:Student  | S:org     | S:university | S:name          | S:matriculation number | S:matriculation numbers | S:Smith   | I:1000000  | S:( | S:) | S:IllegalArgumentException 
+ S:Student  | S:org     | S:university | S:name          | S:matriculation number | S:matriculation numbers | S:Smith   | I:1000000  | S:( | S:) | S:RuntimeException         
+ S:Student  | S:org     | S:university | S:name          | S:matriculation number | S:matriculation numbers | S:Smith   | I:1000000  | S:< | S:> | S:RuntimeException         
+ S:Student  | S:org     | S:university | S:name          | S:matriculation number | S:matriculation numbers | S:Smith   | I:1000000  | S:[ | S:] | S:RuntimeException         
+ S:Student  | S:org     | S:university | S:name          | S:student id           | S:student ids           | S:Baldwin | I:1000000  | S:( | S:) | S:IllegalArgumentException 
+ S:Student  | S:org     | S:university | S:name          | S:student id           | S:student ids           | S:Baldwin | I:1000000  | S:( | S:) | S:RuntimeException         
+ S:Student  | S:org     | S:university | S:name          | S:student id           | S:student ids           | S:Baldwin | I:1000000  | S:< | S:> | S:RuntimeException         
+ S:Student  | S:org     | S:university | S:name          | S:student id           | S:student ids           | S:Baldwin | I:1000000  | S:[ | S:] | S:RuntimeException         
+ S:Student  | S:org     | S:university | S:name          | S:student id           | S:student ids           | S:Doe     | I:1000000  | S:( | S:) | S:IllegalArgumentException 
+ S:Student  | S:org     | S:university | S:name          | S:student id           | S:student ids           | S:Doe     | I:1000000  | S:( | S:) | S:RuntimeException         
+ S:Student  | S:org     | S:university | S:name          | S:student id           | S:student ids           | S:Doe     | I:1000000  | S:< | S:> | S:RuntimeException         
+ S:Student  | S:org     | S:university | S:name          | S:student id           | S:student ids           | S:Doe     | I:1000000  | S:[ | S:] | S:RuntimeException         
+ S:Student  | S:org     | S:university | S:name          | S:student id           | S:student ids           | S:Smith   | I:1000000  | S:( | S:) | S:IllegalArgumentException 
+ S:Student  | S:org     | S:university | S:name          | S:student id           | S:student ids           | S:Smith   | I:1000000  | S:( | S:) | S:RuntimeException         
+ S:Student  | S:org     | S:university | S:name          | S:student id           | S:student ids           | S:Smith   | I:1000000  | S:< | S:> | S:RuntimeException         
+ S:Student  | S:org     | S:university | S:name          | S:student id           | S:student ids           | S:Smith   | I:1000000  | S:[ | S:] | S:RuntimeException         
