@@ -15,18 +15,18 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.proforma.variability.transfer.CV;
-import org.proforma.variability.transfer.CVListVp;
-import org.proforma.variability.transfer.VarSpecRoot;
-import org.proforma.variability.transfer.CVVp;
-import org.proforma.variability.transfer.V;
-import org.proforma.variability.transfer.Vp;
-import org.proforma.variability.util.JavascriptString;
-import org.proforma.variability.util.SpecContainsHelper;
-import org.proforma.variability.util.SpecValueConverter;
 
 import proforma.util.div.XmlUtils;
 import proforma.util.div.XmlUtils.MarshalOption;
+import proforma.varproforma.CV;
+import proforma.varproforma.CVListVp;
+import proforma.varproforma.CVVp;
+import proforma.varproforma.V;
+import proforma.varproforma.VarSpecRoot;
+import proforma.varproforma.Vp;
+import proforma.varproforma.util.JavascriptString;
+import proforma.varproforma.util.SpecContainsHelper;
+import proforma.varproforma.util.SpecValueConverter;
 
 
 

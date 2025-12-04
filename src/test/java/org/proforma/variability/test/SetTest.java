@@ -12,7 +12,8 @@ import java.nio.file.Files;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.proforma.variability.transfer.CVListVp;
+
+import proforma.varproforma.CVListVp;
 
 public class SetTest {
 	

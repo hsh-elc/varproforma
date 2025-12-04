@@ -10,13 +10,13 @@ import java.nio.file.Path;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.proforma.variability.transfer.CVListVp;
-import org.proforma.variability.transfer.VarSpecRoot;
-import org.proforma.variability.transfer.Vp;
-import org.proforma.variability.util.SpecValueConverter;
 
 import proforma.util.div.XmlUtils;
 import proforma.util.div.XmlUtils.MarshalOption;
+import proforma.varproforma.CVListVp;
+import proforma.varproforma.VarSpecRoot;
+import proforma.varproforma.Vp;
+import proforma.varproforma.util.SpecValueConverter;
 
 
 
@@ -176,8 +176,8 @@ public class LargerDemoTest {
                         .collect("Ketchup", "Butter", "Bread")
                         .val(78266)  
         //                .infer(vt -> new Random().nextInt(900000)+100000).noVariant("prod_articlenumber")  
-                                                                                               // noVariant bedeutet: bei der Variantenzählung wird hier ein Faktor 1 generiert. 
-                                                                                               // außerdem muss der bei der Variantengenerierung konkret gewählte Wert 
+                                                                                               // noVariant bedeutet: bei der Variantenzï¿½hlung wird hier ein Faktor 1 generiert. 
+                                                                                               // auï¿½erdem muss der bei der Variantengenerierung konkret gewï¿½hlte Wert 
                                                                                                // neben der Variantenummer gespeichert werden.
                     
                     .endCombineGroup()

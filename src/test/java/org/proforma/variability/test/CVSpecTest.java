@@ -14,12 +14,12 @@ import java.nio.file.Path;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.proforma.variability.transfer.CVListVp;
-import org.proforma.variability.transfer.VarSpecRoot;
-import org.proforma.variability.util.SpecValueConverter;
 
 import proforma.util.div.XmlUtils;
 import proforma.util.div.XmlUtils.MarshalOption;
+import proforma.varproforma.CVListVp;
+import proforma.varproforma.VarSpecRoot;
+import proforma.varproforma.util.SpecValueConverter;
 
 
 

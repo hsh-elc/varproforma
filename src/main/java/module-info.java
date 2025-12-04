@@ -10,10 +10,10 @@ module org.proforma.variability {
     requires org.graalvm.sdk;
     requires com.github.mustachejava;
     
-    exports org.proforma.variability.transfer;
-    exports org.proforma.variability.util;
-    exports org.proforma.variability.fx;
-    opens org.proforma.variability.transfer;
+    exports proforma.varproforma;
+    exports proforma.varproforma.util;
+    exports proforma.varproforma.fx;
+    opens proforma.varproforma;
 
     // The following are needed for tests only.
     //requires static proforma.util;
