@@ -1,4 +1,4 @@
-module org.proforma.variability {
+module proforma.varproforma {
     requires java.logging;
     
     requires transitive proforma.xml21;
