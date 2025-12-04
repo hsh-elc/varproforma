@@ -8,6 +8,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlTransient
 public abstract class Vns extends V {
 
+    private static final long serialVersionUID = 1L;
+
     @Override
     public abstract Vns clone();
 

@@ -18,7 +18,9 @@ import proforma.varproforma.util.Log;
 @XmlType(name="collect-type", propOrder= {"choices"})
 public class VarSpecLeafCollect extends VarSpecLeaf {
 	
-	public VarSpecLeafCollect() {
+	private static final long serialVersionUID = 1L;
+
+    public VarSpecLeafCollect() {
 		
 	}
 	public VarSpecLeafCollect(VarSpecLeafCollect other) {

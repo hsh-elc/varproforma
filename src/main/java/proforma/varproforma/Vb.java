@@ -11,6 +11,7 @@ import javax.xml.bind.annotation.XmlValue;
 @XmlType(name="vb-type")
 public class Vb extends Vns {
 
+    private static final long serialVersionUID = 1L;
     @XmlValue
     private Boolean data;
 

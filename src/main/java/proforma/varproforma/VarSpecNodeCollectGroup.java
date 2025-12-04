@@ -16,7 +16,9 @@ import proforma.varproforma.util.Log;
 @XmlType(name="collect-group-type")
 public class VarSpecNodeCollectGroup extends VarSpecReorderingNode {
 
-	public VarSpecNodeCollectGroup() {
+	private static final long serialVersionUID = 1L;
+
+    public VarSpecNodeCollectGroup() {
 		
 	}
 	

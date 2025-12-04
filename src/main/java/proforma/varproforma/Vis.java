@@ -11,6 +11,8 @@ import proforma.varproforma.util.VisOrRange;
 @XmlTransient
 public abstract class Vis extends V {
 
+    private static final long serialVersionUID = 1L;
+
     @Override
     public abstract Vis clone();
     

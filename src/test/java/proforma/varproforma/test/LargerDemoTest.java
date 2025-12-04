@@ -1,4 +1,4 @@
-package org.proforma.variability.test;
+package proforma.varproforma.test;
 
 import java.io.File;
 import java.io.IOException;

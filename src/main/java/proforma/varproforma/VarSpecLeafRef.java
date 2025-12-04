@@ -12,7 +12,9 @@ import proforma.varproforma.util.Log;
 @XmlType(name="ref-type", propOrder = {"id"})
 public class VarSpecLeafRef extends VarSpecLeaf {
 	
-	public VarSpecLeafRef() {
+	private static final long serialVersionUID = 1L;
+
+    public VarSpecLeafRef() {
 	}
 	public VarSpecLeafRef(VarSpecLeafRef other) {
 		super(other);

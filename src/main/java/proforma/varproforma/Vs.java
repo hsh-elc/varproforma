@@ -11,6 +11,7 @@ import proforma.varproforma.util.Util;
 @XmlType(name="vs-type")
 public class Vs extends Vns {
 
+    private static final long serialVersionUID = 1L;
     @XmlValue
     private String data;
 

@@ -8,7 +8,6 @@ import java.util.List;
 
 import proforma.varproforma.MatArtifact;
 import proforma.varproforma.util.ProformaUtil.AbstractFileChoiceGroup;
-import proforma.xml21.AttachedTxtFileType;
 import proforma.xml21.TaskType;
 import proforma.xml21.TaskFileType;
 

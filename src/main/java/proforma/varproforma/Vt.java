@@ -24,6 +24,8 @@ import proforma.varproforma.util.SpecValueConverter;
 @XmlType(name="vt-type")
 public class Vt extends Vns {
 
+    private static final long serialVersionUID = 1L;
+
     @XmlElements({
         @XmlElement(name="spec", type=VarSpecNodeTable.class, required = true),
         @XmlElement(name="value", type=CVList.class, required = true)
@@ -121,7 +123,7 @@ public class Vt extends Vns {
     }
     
     @Override
-    public DefRefCollector collectDefRefs() {
+    DefRefCollector collectDefRefs() {
         if (isSpec()) {
             return getSpec().collectDefRefs();
         }

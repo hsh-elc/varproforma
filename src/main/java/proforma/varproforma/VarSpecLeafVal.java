@@ -17,7 +17,9 @@ import proforma.varproforma.util.Log;
 @XmlType(name="val-type", propOrder= {"value"})
 public class VarSpecLeafVal extends VarSpecLeaf {
 	
-	public VarSpecLeafVal() {
+	private static final long serialVersionUID = 1L;
+
+    public VarSpecLeafVal() {
 		
 	}
 	public VarSpecLeafVal(VarSpecLeafVal other) {

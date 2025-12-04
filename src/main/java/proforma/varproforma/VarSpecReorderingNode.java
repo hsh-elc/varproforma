@@ -21,6 +21,10 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name="reordering-node-type", propOrder = {"keys"})
 public abstract class VarSpecReorderingNode extends VarSpecInnerNode {
 	
+    private static final long serialVersionUID = 1L;
+
+
+
     public VarSpecReorderingNode() {
         
     }

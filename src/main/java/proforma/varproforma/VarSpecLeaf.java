@@ -7,6 +7,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlTransient
 public abstract class VarSpecLeaf extends VarSpecNode {
 
+    private static final long serialVersionUID = 1L;
+
     public VarSpecLeaf() {
         
     }

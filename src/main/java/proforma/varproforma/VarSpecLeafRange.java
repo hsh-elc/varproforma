@@ -18,7 +18,9 @@ import proforma.varproforma.util.VisOrRange;
 @XmlType(name="range-type", propOrder= {"first", "last", "count"})
 public class VarSpecLeafRange extends VarSpecLeaf {
 	
-	public VarSpecLeafRange() {
+	private static final long serialVersionUID = 1L;
+
+    public VarSpecLeafRange() {
 		
 	}
 	public VarSpecLeafRange(VarSpecLeafRange other) {

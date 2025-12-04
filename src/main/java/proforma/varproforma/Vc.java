@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlValue;
 @XmlType(name="vc-type")
 public class Vc extends Vis {
     
+    private static final long serialVersionUID = 1L;
     @XmlValue
     private Character data;
     

@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlValue;
 @XmlType(name="vi-type")
 public class Vi extends Vis {
     
+    private static final long serialVersionUID = 1L;
     @XmlValue
     private Integer data;
     

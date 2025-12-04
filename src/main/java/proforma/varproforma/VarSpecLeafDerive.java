@@ -20,7 +20,9 @@ import proforma.varproforma.util.Log;
 @XmlType(name="derive-type", propOrder= {"aggregateType", "jsSource"})
 public class VarSpecLeafDerive extends VarSpecLeaf {
 	
-	@XmlAttribute(required = true, name="aggregate-type")
+	private static final long serialVersionUID = 1L;
+
+    @XmlAttribute(required = true, name="aggregate-type")
 	private DerivativeAggregateType aggregateType;
 	
 	@XmlElement(required = true, name="js-source")

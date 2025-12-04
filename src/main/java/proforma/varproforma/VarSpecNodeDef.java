@@ -19,7 +19,9 @@ import proforma.varproforma.util.Log;
 @XmlType(name="def-type", propOrder = {"id"})
 public class VarSpecNodeDef extends VarSpecReorderingNode {
 	
-	public VarSpecNodeDef() {
+	private static final long serialVersionUID = 1L;
+
+    public VarSpecNodeDef() {
 		this(null, new String[0]);
 	}
 	

@@ -17,7 +17,9 @@ import proforma.varproforma.util.Log;
 @XmlType(name="combine-type", propOrder= {"value"})
 public class VarSpecLeafCombine extends VarSpecLeaf {
 	
-	public VarSpecLeafCombine() {
+	private static final long serialVersionUID = 1L;
+
+    public VarSpecLeafCombine() {
 		
 	}
 	public VarSpecLeafCombine(VarSpecLeafCombine other) {

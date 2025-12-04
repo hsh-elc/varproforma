@@ -18,7 +18,9 @@ import proforma.varproforma.util.Log;
 @XmlType(name="combine-group-type")
 public class VarSpecNodeCombineGroup extends VarSpecReorderingNode {
 
-	public VarSpecNodeCombineGroup() {
+	private static final long serialVersionUID = 1L;
+
+    public VarSpecNodeCombineGroup() {
 		
 	}
 	

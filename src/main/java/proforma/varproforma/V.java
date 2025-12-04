@@ -48,7 +48,7 @@ public abstract class V implements Comparable<V>, java.io.Serializable {
     public abstract V clone();
 
 
-    public DefRefCollector collectDefRefs() {
+    DefRefCollector collectDefRefs() {
         return new DefRefCollector(); // default implementation
     }
     

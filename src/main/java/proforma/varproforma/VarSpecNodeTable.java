@@ -19,6 +19,9 @@ import proforma.varproforma.util.Log;
 public class VarSpecNodeTable extends VarSpecReorderingNode {
 	
 
+    private static final long serialVersionUID = 1L;
+
+
     public VarSpecNodeTable(){
         
     }

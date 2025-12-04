@@ -20,6 +20,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name="inner-node-type", propOrder = {"children"})
 public abstract class VarSpecInnerNode extends VarSpecNode {
 
+    private static final long serialVersionUID = 1L;
+
     @XmlElements({
         @XmlElement(name="val", type=VarSpecLeafVal.class, required = true),
         @XmlElement(name="collect-group", type=VarSpecNodeCollectGroup.class, required = true),

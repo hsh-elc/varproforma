@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name="root")
 public class VarSpecRoot extends VarSpecInnerNode {
 	
+    private static final long serialVersionUID = 1L;
     @XmlElement(name = "cvp")
     private CVp cvp;
 

@@ -9,10 +9,6 @@ import java.util.Objects;
 
 import proforma.xml21.TaskFileType;
 import proforma.xml21.TaskFilesType;
-import proforma.xml21.EmbeddedBinFileType;
-import proforma.xml21.EmbeddedTxtFileType;
-import proforma.xml21.AttachedTxtFileType;
-
 import proforma.xml21.GradesBaseRefChildType;
 import proforma.xml21.GradesCombineRefChildType;
 import proforma.xml21.GradesTestRefChildType;
