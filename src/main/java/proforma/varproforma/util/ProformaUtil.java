@@ -1,11 +1,7 @@
 package proforma.varproforma.util;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.nio.charset.StandardCharsets;
 import java.util.ListIterator;
-import java.util.NoSuchElementException;
-import java.util.Objects;
 
 import proforma.xml21.TaskFileType;
 import proforma.xml21.TaskFilesType;
@@ -13,25 +9,33 @@ import proforma.xml21.GradesBaseRefChildType;
 import proforma.xml21.GradesCombineRefChildType;
 import proforma.xml21.GradesTestRefChildType;
 
-import proforma.xml21.GradesNodeType;
-import proforma.xml21.GradingHintsType;
-
 public class ProformaUtil {
     
-    public static AbstractFileChoiceGroup getFile(TaskFileType file) {
-        return AbstractFileChoiceGroup.from(file);
+    public static interface FileChoiceGroup {
+        boolean isTxt();
+        boolean isBin();
+        boolean isAttached();
+        boolean isEmbedded();
+        String getPath();
+        String getEncoding();
+        String getNaturalLang();
+        byte[] getBytesOfEmbeddedFile();
     }
     
-    public static class AbstractFileChoiceGroup {
+    public static TaskFileChoiceGroup getFile(TaskFileType file) {
+        return TaskFileChoiceGroup.from(file);
+    }
+    
+    public static class TaskFileChoiceGroup implements FileChoiceGroup {
         TaskFileType file;
-        public static AbstractFileChoiceGroup from(TaskFileType file) {
+        public static TaskFileChoiceGroup from(TaskFileType file) {
             if (file.getEmbeddedBinFile() == null &&
                 file.getEmbeddedTxtFile() == null &&
                 file.getAttachedBinFile() == null &&
                 file.getAttachedTxtFile() == null) {
                 return null;
             }
-            return new AbstractFileChoiceGroup(file);
+            return new TaskFileChoiceGroup(file);
         }
         @Override public String toString() {
             if (file.getEmbeddedBinFile() != null) return "embedded-bin-file";
@@ -40,7 +44,7 @@ public class ProformaUtil {
             if (file.getAttachedTxtFile() != null) return "attached-txt-file";
             return "unknown-file";
         }
-        private AbstractFileChoiceGroup(TaskFileType file) {
+        private TaskFileChoiceGroup(TaskFileType file) {
             this.file= file;
         }
         
@@ -100,79 +104,19 @@ public class ProformaUtil {
                 setPath(path);
             }
         }
+        public byte[] getBytesOfEmbeddedFile() {
+            if (!isEmbedded()) return null;
+            if (isTxt()) {
+                return file.getEmbeddedTxtFile().getValue().getBytes(StandardCharsets.UTF_8);
+            } else {
+                return file.getEmbeddedBinFile().getValue();
+            }
+        }
 
     }
     
     
-    public static List<GradesNodeType> getNodesReferencing(GradingHintsType gh, boolean isTestRef, String ref, String subRef) {
-        ArrayList<GradesNodeType> result= new ArrayList<>();
-        for (GradesNodeType node : getRootAndCombineNodes(gh)) {
-            if (getChildRefByRefAndSubRef(node, isTestRef, ref, subRef) != null) {
-                result.add(node);
-            };
-        }
-        return result;
-        
-    }
     
-    public static boolean removeCombineNode(GradingHintsType gh, String combineId) {
-        boolean found= false;
-        for (int k= gh.getCombine().size()-1; k >= 0; k--) {
-            GradesNodeType node= gh.getCombine().get(k);
-            if (node.getId().equals(combineId)) {
-                gh.getCombine().remove(k);
-                found= true;
-            }
-        }
-        return found;
-    }
-    
-    
-    public static Iterable<GradesNodeType> getRootAndCombineNodes(GradingHintsType gh) {
-        return new Iterable<GradesNodeType>() {
-            @Override public Iterator<GradesNodeType> iterator() {
-                return new Iterator<GradesNodeType>() {
-                    private boolean noneReturnedYet= true;
-                    private Iterator<GradesNodeType> itr= null;
-                    @Override public boolean hasNext() {
-                        if (noneReturnedYet) return true;
-                        if (itr == null) itr= gh.getCombine().iterator();
-                        return itr.hasNext();
-                    }
-                    @Override public GradesNodeType next() {
-                        if (!hasNext()) throw new NoSuchElementException();
-                        if (noneReturnedYet) {
-                            noneReturnedYet= false;
-                            return gh.getRoot();
-                        } else {
-                            return itr.next();
-                        }
-                    }
-                };
-            }
-        };
-    }
-    
-    public static boolean removeChildRef(GradesNodeType gn, boolean isTestRef, String ref, String subRef) {
-        boolean found= false;
-        for (int i= gn.getTestRefOrCombineRef().size()-1; i >= 0; i--) {
-            GradesBaseRefChildType chr= gn.getTestRefOrCombineRef().get(i);
-            if (chr instanceof GradesCombineRefChildType && !isTestRef) {
-                GradesCombineRefChildType cr= (GradesCombineRefChildType)chr;
-                if (cr.getRef().equals(ref)) {
-                    gn.getTestRefOrCombineRef().remove(i);
-                    found= true;
-                }
-            } else if (chr instanceof GradesTestRefChildType && isTestRef) {
-                GradesTestRefChildType tr= (GradesTestRefChildType)chr;
-                if (tr.getRef().equals(ref) && Objects.equals(tr.getSubRef(), subRef)) {
-                    gn.getTestRefOrCombineRef().remove(i);
-                    found= true;
-                }
-            }
-        }
-        return found;
-    }
     
 
     public static TaskFileType findByPath(TaskFilesType files, String ppath) {
@@ -225,18 +169,6 @@ public class ProformaUtil {
             return null;
         }
     }
-    
-    public static GradesBaseRefChildType getChildRefByRefAndSubRef(GradesNodeType gn, boolean isTestRef, String ref, String subRef) {
-        for (GradesBaseRefChildType cr : gn.getTestRefOrCombineRef()) {
-            if ((cr instanceof GradesTestRefChildType && isTestRef || cr instanceof GradesCombineRefChildType && !isTestRef) 
-                    && ProformaUtil.getRef(cr).equals(ref) 
-                    && Objects.equals(ProformaUtil.getSubRef(cr), subRef)) {
-                return cr;
-            }
-        }
-        return null;
-    }
-    
 
 
 }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import proforma.varproforma.MatArtifact;
-import proforma.varproforma.util.ProformaUtil.AbstractFileChoiceGroup;
+import proforma.varproforma.util.ProformaUtil.TaskFileChoiceGroup;
 import proforma.xml21.TaskType;
 import proforma.xml21.TaskFileType;
 
@@ -56,7 +56,7 @@ public class MatArtifactProviderAttachedTxtFileContents implements MatArtifactPr
         if (fid != null) {
             TaskFileType file= ProformaUtil.findById(task.getFiles(), fid);
             if (file == null) throw new IllegalArgumentException("Unexpected file id '"+fid+"'");
-            AbstractFileChoiceGroup fcg = ProformaUtil.getFile(file); 
+            TaskFileChoiceGroup fcg = ProformaUtil.getFile(file); 
             if (fcg == null) {
                 throw new IllegalArgumentException("Unexpected file choice group 'null' in matArtifact of type attachedTxtFileContent for fileId '"+fid+"'");
             }

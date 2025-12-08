@@ -6,7 +6,7 @@ import java.util.List;
 
 import proforma.xml21.TaskType;
 import proforma.varproforma.MatArtifact;
-import proforma.varproforma.util.ProformaUtil.AbstractFileChoiceGroup;
+import proforma.varproforma.util.ProformaUtil.TaskFileChoiceGroup;
 import proforma.xml21.TaskFileType;
 
 public class MatArtifactProviderFileNames implements MatArtifactProvider<String> {
@@ -61,7 +61,7 @@ public class MatArtifactProviderFileNames implements MatArtifactProvider<String>
     
             
             // We rename attached files in the zip:
-            AbstractFileChoiceGroup fcg= ProformaUtil.getFile(file);
+            TaskFileChoiceGroup fcg= ProformaUtil.getFile(file);
             Path srcFile;
             if (fcg.isAttached()) {
                 srcFile= pathToUnzippedContents.resolve(fcg.getPath());
@@ -79,7 +79,7 @@ public class MatArtifactProviderFileNames implements MatArtifactProvider<String>
             TaskFileType file= null;
             
             for (TaskFileType f : task.getFiles().getFile()) {
-                AbstractFileChoiceGroup fcg= ProformaUtil.getFile(f);
+                TaskFileChoiceGroup fcg= ProformaUtil.getFile(f);
                 if (fcg.isAttached()) {
                     if (p.equals(fcg.getPath())) {
                         file= f;

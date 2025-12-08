@@ -10,7 +10,7 @@ import java.util.List;
 import proforma.xml21.TaskFilesType;
 import proforma.xml21.TaskType;
 import proforma.varproforma.MatArtifact;
-import proforma.varproforma.util.ProformaUtil.AbstractFileChoiceGroup;
+import proforma.varproforma.util.ProformaUtil.TaskFileChoiceGroup;
 import proforma.xml21.TaskFileType;
 
 public class MatArtifactProviderFileExistences implements MatArtifactProvider<Boolean> {
@@ -70,14 +70,14 @@ public class MatArtifactProviderFileExistences implements MatArtifactProvider<Bo
             fileIdsToBeDeleted.add(fid);
 
             // We delete attached files from the zip:
-            AbstractFileChoiceGroup fcg= ProformaUtil.getFile(file);
+            TaskFileChoiceGroup fcg= ProformaUtil.getFile(file);
             if (fcg.isAttached()) {
                 srcFileToBeDeleted= pathToUnzippedContents.resolve(fcg.getPath());
             }
         } 
         if (p != null) {
             for (TaskFileType file : files.getFile()) {
-                AbstractFileChoiceGroup fcg= ProformaUtil.getFile(file);
+                TaskFileChoiceGroup fcg= ProformaUtil.getFile(file);
                 if (fcg.isAttached()) {
                     if (fcg.getPath().startsWith(p)) {
                         fileIdsToBeDeleted.add(file.getId());

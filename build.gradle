@@ -8,7 +8,7 @@ logger.warn("Running JVM version: "+JavaVersion.current())
 logger.warn("Building for JDK $javaTargetVersion");
 
 group = 'proforma'
-version = '1.2.1'
+version = '1.2.2'
 
 java {
     withJavadocJar()
@@ -209,11 +209,6 @@ def createSchemaTask(Project prj, String taskName, List<String> excludedPatterns
                 '-d', destDir,
                 '-classpath', "${prj.compileJava.destinationDir}${File.pathSeparator}${prj.configurations.compileClasspath.asPath}"
                 ]
-//            def a= [ '-cp', prj.configurations.schemagenTool.asPath,
-//                'com.sun.tools.jxc.SchemaGeneratorFacade',
-//                '-d', destDir,
-//                '-classpath', "${prj.compileJava.destinationDir}${File.pathSeparator}${prj.configurations.compileClasspath.asPath}"
-//                ]
             a.addAll(sources)
             args a
         }
@@ -270,28 +265,6 @@ logger.info("entry: " + entry.toString())
                                 if (p.contains("org.eclipse.buildship.core.gradleclasspathcontainer")) {
                                     entry.entryAttributes['module'] = 'true'
                                 }
-/*
-                                // https://stackoverflow.com/a/32062263
-                                // and
-                                // https://github.com/eclipse/buildship/issues/573#issuecomment-330166396
-                                if (p.contains("JRE_CONTAINER") && p.contains("StandardVMType")) {
-                                    def subject = "javafx/**"
-                                    Set<org.gradle.plugins.ide.eclipse.model.AccessRule> rules = con.getAccessRules()
-                                    def fxRule = null
-                                    for (rule in rules) { 
-                                        if (rule.pattern.equals(subject)) {
-                                            fxRule = rule
-                                            break
-                                        }
-                                    }
-                                    if (fxRule == null) { 
-                                        fxRule = new org.gradle.plugins.ide.eclipse.model.AccessRule("accessible", "javafx/**")
-                                        rules.add(fxRule)
-                                    } else {
-                                        fxRule.setKind("accessible")
-                                    }
-                                }
-*/
                             }
                         }
                         //entries.findAll { isModule(it) }.each { it.entryAttributes['module'] = 'true' } //https://github.com/eclipse/buildship/issues/620
@@ -313,65 +286,12 @@ logger.info("test: " + it)
 logger.info("test: " + it)
                             it.entryAttributes['test'] = 'true'
                         }
-//entries.each { entry -> 
-//    logger.warn("--------------------------------------------------------")
-//    logger.warn(entry.toString())
-//    entry.properties.each { p ->
-//        logger.warn(p.toString())
-//    } 
-/*
-    if (entry instanceof org.gradle.plugins.ide.eclipse.model.ProjectDependency) {
-        def depen = (org.gradle.plugins.ide.eclipse.model.ProjectDependency)entry
-        if (depen.publication.file.toString().contains("Proforma.jar")) {
-            logger.warn("--------------------------------------------------------")
-            logger.warn(entry.toString())
-            entry.properties.each { p ->
-                logger.warn(p.toString())
-            } 
-        }
-    }
-    if (entry instanceof org.gradle.plugins.ide.eclipse.model.Library) {
-        def libr = (org.gradle.plugins.ide.eclipse.model.Library)entry
-        if (libr.path.toString().contains("Proforma.jar")) {
-            logger.warn("--------------------------------------------------------")
-            logger.warn(entry.toString())
-            entry.properties.each { p ->
-                logger.warn(p.toString())
-            } 
-        }
-    }
-*/
-//}
                     }
                 }
             }
         }
         project {
             natures 'org.eclipse.buildship.core.gradleprojectnature' // https://discuss.gradle.org/t/how-to-set-the-module-path-project-jigsaw-for-eclipse-projects-via-gradle/26801/2
-/*
-            def tmp= new ArrayList<String>()
-            if (refdPrjs != null) {
-                refdPrjs.each {
-                    def name= it
-                    if (name.startsWith(":")) name= name.substring(1)
-                    if (name.length() == 0) name= "development" // the root project
-                    tmp << name
-                    referencedProjects name
-                }
-            }
-            refdPrjs= tmp
-            if (prj.plugins.hasPlugin('java')) {
-                prj.configurations.compile.dependencies.each {
-                    if (it instanceof ProjectDependency) {
-                        def pn= it.dependencyProject.name
-                        if (refdPrjs == null || !refdPrjs.contains(pn)){
-                            //println "   "+prj.name+" references "+pn
-                            referencedProjects pn
-                        }
-                    }
-                }
-            }
-*/
         }
     }
 }
