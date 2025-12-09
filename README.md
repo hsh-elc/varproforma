@@ -1,8 +1,13 @@
 ## Gradle Build
 
-The dependencies are already there in a local repository (see folder `maven-repository`). 
+Before build, download and install dependencies for ProFormA java libraries from github:
 
-You can build `jar`-file with:
+```bash
+./mvnInstallProformaDependenciesFromGithub.sh
+```
+
+Then you can build the `jar`-file with:
+
 ```
 bash gradlew clean build -x test
 ```
