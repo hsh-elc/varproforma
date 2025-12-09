@@ -5,7 +5,7 @@ set -e # exit on first error
 MVNOPTS=""
 CURLOPTS=""
 VERBOSE="1"
-PFLIBVER=`awk '/dependencies {/{flag=1;next}/} [/][/] dependencies/{flag=0}flag' build.gradle | grep proforma:proformaxml | head -1 | sed -e 's#^.*"proforma:proformaxml.*:\(.*\)".*$#\1#g'`
+PFLIBVER=`grep proforma:proformaxml build.gradle | head -1 | sed -e 's#^.*"proforma:proformaxml.*:\(.*\)".*$#\1#g'`
 TMPDIR=/tmp
 
 unameOut="$(uname -s)"

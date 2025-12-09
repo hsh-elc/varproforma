@@ -8,7 +8,18 @@ logger.warn("Running JVM version: "+JavaVersion.current())
 logger.warn("Building for JDK $javaTargetVersion");
 
 group = 'proforma'
-version = '1.3.0'
+version = readVersionFromBashScript() 
+
+
+
+def readVersionFromBashScript() {
+    java.util.Optional<String> versionLine = java.nio.file.Files.readAllLines(file("mvnInstallVarproformaDependenciesFromGithub.sh").toPath()).stream().filter { line -> line.startsWith("VPFLIBVER=") }.findFirst()
+    if (versionLine.isEmpty()) throw new AssertionError("Cannot retrieve version from bash script");
+    String theVersion = versionLine.get().replaceAll("VPFLIBVER=", "");
+    logger.warn("Building proforma:varproforma:"+theVersion);
+    return theVersion; 
+}
+
 
 java {
     withJavadocJar()
