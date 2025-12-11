@@ -79,8 +79,8 @@ download() {
     local file=$1
     local url="https://github.com/hsh-elc/proforma/releases/download/v${PFLIBVER}/$file"
     echoline "   downloading from $url to $WDIR/$file"
-    curl $CURLOPTS -L \
-        -o "$WDIR/$file" \
+    wget $CURLOPTS --retry-connrefused --retry-on-http-error=503,429 \
+        -O "$WDIR/$file" \
         $url
         
 }
