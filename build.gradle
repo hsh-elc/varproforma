@@ -136,9 +136,9 @@ dependencies {
     
     impldeps "org.glassfish.jaxb:jaxb-runtime:2.3.2";
 
-    apideps "proforma:proformaxml-2-1:0.4.0"
+    apideps "proforma:proformaxml-2-1:0.4.1"
     
-    modulesForTest "proforma:proformautil:0.4.0"
+    modulesForTest "proforma:proformautil:0.4.1"
     modulesForTest "junit:junit:4.13.2"
 } // dependencies
 
