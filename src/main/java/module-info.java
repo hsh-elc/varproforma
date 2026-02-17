@@ -16,6 +16,8 @@ module proforma.varproforma {
     opens proforma.varproforma;
 
     // The following are needed for tests only.
+    // Only needed within Eclipse
+    // See also: https://docs.gradle.org/current/userguide/java_testing.html#sec:java_testing_modular
     //requires static proforma.util;
     // This is a bad workaround to get rid off compile errors in eclipse for the tests to be compiled on the classpath
     //requires static junit;

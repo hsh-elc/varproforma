@@ -1,0 +1,6 @@
+// https://sormuras.github.io/blog/2018-09-11-testing-in-the-modular-world.html
+
+--add-modules
+  proforma.util
+--add-reads
+  proforma.varproforma=proforma.util

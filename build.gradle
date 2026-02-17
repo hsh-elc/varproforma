@@ -146,9 +146,10 @@ dependencies {
 configurations.implementation.extendsFrom(configurations.impldeps)
 configurations.api.extendsFrom(configurations.apideps)
 configurations.implementation.extendsFrom(configurations.external)
-configurations.testCompileOnly.extendsFrom(configurations.modulesForTest)
+configurations.testImplementation.extendsFrom(configurations.modulesForTest)
 
 // This is a bad workaround for getting rid of compile errors in eclipse for the tests to be compiled on the classpath
+// see also: https://docs.gradle.org/current/userguide/java_testing.html#sec:java_testing_modular
 //configurations.implementation.extendsFrom(configurations.modulesForTest)
 
 
@@ -188,6 +189,7 @@ test {
         //showStandardStreams = true
     }
 }
+
 
 def createSchemaTask(Project prj, String taskName, List<String> excludedPatterns, String filename) {
     prj.tasks.create(name : taskName, type: Exec, dependsOn: prj.configurations.schemagenTool) {
