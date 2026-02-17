@@ -2,6 +2,7 @@ plugins {
     id 'java-library'
     id 'org.openjfx.javafxplugin' version '0.0.12'
     id 'maven-publish'
+    id 'org.javamodularity.moduleplugin' version '1.8.15'
 }
 
 logger.warn("Running JVM version: "+JavaVersion.current())
